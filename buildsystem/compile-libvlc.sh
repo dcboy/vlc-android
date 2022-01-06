@@ -300,7 +300,6 @@ avlc_build() {
     --disable-sftp           \
     --disable-nfs            \
     --disable-smb2           \
-    --disable-v4l2          \
     --disable-decklink      \
     --disable-vcd           \
     --disable-libcddb       \
@@ -508,7 +507,6 @@ avlc_build() {
     --disable-sftp           \
     --disable-nfs            \
     --disable-smb2           \
-    --disable-v4l2          \
     --disable-decklink      \
     --disable-vcd           \
     --disable-libcddb       \
@@ -642,9 +640,181 @@ avlc_build() {
   ########################
 
   VLC_MODULE_BLACKLIST="
+    a52
+    aa
+    access_srt
+    access_wasapi
+    accesstweaks
+    adaptive
+    adf
+    adjust
+    adpcm
+    adummy
+    aes3
+    afile
+    aiff
+    alphamask
+    alsa
+    amem
+    anaglyph
+    android_audiotrack
+    antiflicker
+    aom
+    araw
+    archive
+    aribcam
+    aribsub
+    asf
+    attachment
+    au
+    audio.*
+    auhal
+    avahi
+    avaudiocapture
+    avcapture
+    avi
+    avio
+    ball
+    bandlimited_resampler
+    blend.*
+    bluescreen
+    bonjour
+    bpg
+    caca
+    cache.*
+    caf
+    canvas
+    caopengllayer
+    cc
+    cdda
+    cdg
+    chain
+    chorus_flanger
+    chroma.*
+    ci_filters
+    clone
+    colorthres
+    compressor
+    console_logger
+    croppadd
+    crystalhd
+    cvdsub
+    cvpx
+    d3d11va
+    daala
+    dav1d
+    dbus.*
+    dc1394
+    dca
+    dcp
+    ddummy
+    decklink
+    decklinkoutput
+    demux_.*
+    demuxdump
+    diracsys
+    direct.*
+    dmo
+    dolby_surround_decoder
+    dsm
+    dtv
+    dummy
+    dv.*
+    dynamicoverlay
+    ed.*
+    egl.*
+    equalizer
+    erase
+    es
+    evas
+    export
+    faad
+    fb
+    fdkaac
+    file_.*
+    fingerprinter
+    flac.*
+    flaschen
+    float_mixer
+    fluidsynth
+    folder
+    freetype
+    freeze
+    ftp
+    g711
+    gain
+    gaussianblur
+    gestures
+    gl
+    gl.*
+    gme
+    gnutls
+    goom
+    gra.*
+    grey_yuv
+    gstdecode
+    hds
+    headphone_channel_mixer
+    hotkeys
+    hqdn3d
+    htt.*
+    i42.*
+    idummy
+    imem
+    image
+    inflate
+    integer_mixer
+    invert
+    iomx
+    jack
+    jpeg
+    ka.*
+    kva
+    kwallet
+    lib.*
+    lin.*
+    lirc
+    logo
+    lpcm
+    lua
+    macosx
+    mad
+    magnify
+    marq
+    mediadirs
+    mediacodec
+    mux_.*
+    n.*
+    o.*
+    sa.*
+    sc.*
+    sd.*
+    se.*
+    sftp
+    sh.*
+    si.*
+    sk.*
+    sm.*
+    sndio
+    soxr
+    sp.*
+    st.*
+    su.*
+    sv.*
+    sw.*
+    syslog
+    v.*
+    w.*
+    zvbi
+    mux_.*
+    vout_.*
+    xcb_.*
+    xdg_.*
+    vdpau_.*
+    access_output.*
     addons.*
     stats
-    access_(bd|shm|imem)
+    access_(bd|shm|imem|oss|concat)
     oldrc
     real
     hotkeys
@@ -873,6 +1043,7 @@ avlc_build() {
   DEFINITION=""
   BUILTINS="const void *vlc_static_modules[] = {\n"
   for file in $VLC_MODULES; do
+    echo "==========module==========: $file"
     outfile=${REDEFINED_VLC_MODULES_DIR}/$(basename $file)
     name=$(echo $file | sed 's/.*\.libs\/lib//' | sed 's/_plugin\.a//')
     symbols=$("${CROSS_TOOLS}nm" -g $file)
