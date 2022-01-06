@@ -803,7 +803,16 @@ avlc_build() {
     sv.*
     sw.*
     syslog
-    v.*
+    va.*
+    vc.*
+    vd.*
+    vhs
+    vi.*
+    vmem
+    vnc
+    vo.*
+    vpx
+    vsxu
     w.*
     zvbi
     mux_.*
