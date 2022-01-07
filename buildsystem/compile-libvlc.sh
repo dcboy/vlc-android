@@ -368,7 +368,6 @@ avlc_build() {
 --disable-kate          \
 --disable-tiger         \
 --disable-css           \
---disable-gles2          \
 --disable-xcb            \
 --disable-xvideo         \
 --disable-vdpau          \
@@ -484,7 +483,6 @@ avlc_build() {
     --disable-udev \
     --disable-libxml2 \
     --disable-caca \
-    --disable-gles2 \
     --disable-goom \
     --disable-projectm \
     --disable-sout \
@@ -516,6 +514,7 @@ avlc_build() {
     --disable-realrtsp       \
     --disable-asdcp          \
     --disable-dvbpsi         \
+--enable-gles2 \
 --disable-gme            \
 --disable-sid            \
 --disable-ogg            \
@@ -575,7 +574,6 @@ avlc_build() {
 --disable-kate          \
 --disable-tiger         \
 --disable-css           \
---disable-gles2          \
 --disable-xcb            \
 --disable-xvideo         \
 --disable-vdpau          \
@@ -722,7 +720,9 @@ avlc_build() {
     dv.*
     dynamicoverlay
     ed.*
-    egl.*
+    egl_win32
+    egl_wl
+    egl_x11
     equalizer
     erase
     es
@@ -745,20 +745,16 @@ avlc_build() {
     gain
     gaussianblur
     gestures
-    gl
-    gl.*
     gme
     gnutls
     goom
     gra.*
-    grey_yuv
     gstdecode
     hds
     headphone_channel_mixer
     hotkeys
     hqdn3d
     htt.*
-    i42.*
     idummy
     imem
     image
@@ -868,7 +864,6 @@ avlc_build() {
     visual
     fb
     aout_file
-    yuv
     .dummy
 "
 
